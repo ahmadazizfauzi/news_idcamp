@@ -61,6 +61,7 @@ class _NewsArticleState extends State<NewsArticle> {
             .map((news) => Column(
                   children: [
                     BuildNewsCard(
+                      id: news.id,
                       title: news.title,
                       author: news.author,
                       date: news.date,
@@ -76,6 +77,7 @@ class _NewsArticleState extends State<NewsArticle> {
 }
 
 class BuildNewsCard extends StatelessWidget {
+  final int id;
   final String title;
   final String author;
   final String date;
@@ -83,6 +85,7 @@ class BuildNewsCard extends StatelessWidget {
 
   const BuildNewsCard({
     Key? key,
+    required this.id,
     required this.title,
     required this.author,
     required this.date,
@@ -91,89 +94,98 @@ class BuildNewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade200),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-            ),
-            child: Image.asset(
-              imagePath,
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 8),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 12,
-                        backgroundColor: AppColors.primary.withOpacity(0.1),
-                        child: Text(
-                          author[0],
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.primary,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Flexible(
-                        child: Row(
-                          children: [
-                            Flexible(
-                              child: Text(
-                                author,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 12,
-                                  color: Colors.grey[600],
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            Text(
-                              " • ",
-                              style: TextStyle(color: Colors.grey[400]),
-                            ),
-                            Text(
-                              date,
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                color: Colors.grey[400],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/detail-news',
+          arguments: {'newsId': id},
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey.shade200),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+              ),
+              child: Image.asset(
+                imagePath,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 8),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 12,
+                          backgroundColor: AppColors.primary.withOpacity(0.1),
+                          child: Text(
+                            author[0],
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Flexible(
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  author,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    color: Colors.grey[600],
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Text(
+                                " • ",
+                                style: TextStyle(color: Colors.grey[400]),
+                              ),
+                              Text(
+                                date,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
