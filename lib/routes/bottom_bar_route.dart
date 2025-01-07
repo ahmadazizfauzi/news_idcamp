@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/constants/color/app_color.dart';
 import 'package:news/persentation/screens/home/home_screen.dart';
-import 'package:news/persentation/screens/welcome/welcome_screen.dart';
 import 'package:news/persentation/screens/profile/profile_screen.dart';
 
 class BottomBarRoute extends StatefulWidget {
