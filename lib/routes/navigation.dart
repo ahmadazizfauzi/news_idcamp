@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news/persentation/screens/home/home_screen.dart';
 import 'package:news/persentation/screens/welcome/welcome_screen.dart';
 import 'package:news/routes/bottom_bar_route.dart';
 
@@ -23,6 +24,7 @@ class Navigation extends StatelessWidget {
       initialRoute: '/isLoggedIn',
       routes: {
         '/welcome': (context) => const WelcomeScreen(),
+        '/home': (context) => const HomeScreen(),
         '/isLoggedIn': (context) => const BottomBarRoute(),
       },
     );

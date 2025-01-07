@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/constants/color/app_color.dart';
+import 'package:news/persentation/screens/home/home_screen.dart';
 import 'package:news/persentation/screens/welcome/welcome_screen.dart';
 
 class BottomBarRoute extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomBarRouteState extends State<BottomBarRoute> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    const WelcomeScreen(),
+    const HomeScreen(),
     const WelcomeScreen(),
     const WelcomeScreen(),
   ];
