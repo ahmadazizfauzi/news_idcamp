@@ -22,7 +22,7 @@ class Navigation extends StatelessWidget {
           Theme.of(context).primaryTextTheme,
         ),
       ),
-      initialRoute: '/isLoggedIn',
+      initialRoute: '/welcome',
       routes: {
         '/welcome': (context) => const WelcomeScreen(),
         '/home': (context) => const HomeScreen(),
