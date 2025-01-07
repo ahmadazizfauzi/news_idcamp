@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/constants/color/app_color.dart';
 import 'package:news/persentation/screens/home/home_screen.dart';
 import 'package:news/persentation/screens/welcome/welcome_screen.dart';
+import 'package:news/persentation/screens/profile/profile_screen.dart';
 
 class BottomBarRoute extends StatefulWidget {
   const BottomBarRoute({super.key});
@@ -15,8 +16,7 @@ class _BottomBarRouteState extends State<BottomBarRoute> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const WelcomeScreen(),
-    const WelcomeScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -57,10 +57,7 @@ class _BottomBarRouteState extends State<BottomBarRoute> {
                 icon: Icon(Icons.home),
                 label: 'Home',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.compass_calibration_outlined),
-                label: 'Bot',
-              ),
+              
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
                 label: 'Profile',
